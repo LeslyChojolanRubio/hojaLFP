@@ -22,12 +22,8 @@
 #con que una producción sea recursivapor la izquierda, la gramática ya es recursiva por izquierda
 #analizador lexico simulado    imagina que cada letra es una palabra. Como lo de ordenar sintacticamente un if.
 listaTokens = []   # m,,,x
-listaTokens.append({'lexema': 'm', 'tipo': 'tk_m', 'linea': 1, 'columna': 1})
-listaTokens.append({'lexema': ',', 'tipo': 'tk_coma', 'linea': 1, 'columna': 2})
-listaTokens.append({'lexema': ',', 'tipo': 'tk_coma', 'linea': 1, 'columna': 22})
-listaTokens.append({'lexema': ',', 'tipo': 'tk_coma', 'linea': 1, 'columna': 3})
-listaTokens.append({'lexema': ',', 'tipo': 'tk_coma', 'linea': 1, 'columna': 4})
-listaTokens.append({'lexema': 'x', 'tipo': 'tk_x', 'linea': 1, 'columna': 5})
+listaTokens.append({'lexema': 'x', 'tipo': 'tk_x', 'linea': 1, 'columna': 1})
+
 
 #no estoy viendo si una cadena es valida o no eso es un hecho estoy viendo si la lista de tokens está en el orden correcto sintacticamente
 #m,b.x,,,x..b
@@ -50,11 +46,11 @@ def FACTORIZADA1(indiceToken):         #a cada no terminal le corresponde una fu
             indiceToken += 1
             if listaTokens[indiceToken]['tipo'] == 'tk_x':
                 A_prima(indiceToken+1)
-                #return True
+                return True
             #print('ya lee el segundo id ' + listaTokens[indiceToken]['lexema'] )
             else:
                 print('Error sintáctico: Se esperaba un token x y se recibió ' + listaTokens[indiceToken]['tipo'] , listaTokens[indiceToken]['linea'], listaTokens[indiceToken]['columna'] )
-                #return False
+                return False
         else:
             print('Error sintáctico: Se esperaba un token coma y se recibió ' + listaTokens[indiceToken]['tipo'] , listaTokens[indiceToken]['linea'], listaTokens[indiceToken]['columna'] )
     
@@ -73,11 +69,11 @@ def FACTORIZADA2(indiceToken):         #a cada no terminal le corresponde una fu
         indiceToken += 1    
         if listaTokens[indiceToken]['tipo'] == 'tk_b':
             A_prima(indiceToken+1)
-            #return True
+            return True
         #print('ya lee el segundo id ' + listaTokens[indiceToken]['lexema'] )
         else:
             print('Error sintáctico: Se esperaba un token b y se recibió ' + listaTokens[indiceToken]['tipo'] , listaTokens[indiceToken]['linea'], listaTokens[indiceToken]['columna'] )
-            #return False
+            return False
     elif listaTokens[indiceToken]['tipo'] == 'tk_x':
         A_prima(indiceToken+1)
                 #return True
@@ -92,14 +88,14 @@ def A_prima(indiceToken):
         if listaTokens[indiceToken]['tipo'] == 'tk_coma':
             #print('va bien')
             #indiceToken += 1
-            FACTORIZADA1(indiceToken+1)
-            return True
+            return FACTORIZADA1(indiceToken+1)
+            #return True
             
             #print('ya lee el segundo id ' + listaTokens[indiceToken]['lexema'] )
         elif listaTokens[indiceToken]['tipo'] == 'tk_punto':
                 #indiceToken += 1
-                FACTORIZADA2(indiceToken+1)
-                return True
+                return FACTORIZADA2(indiceToken+1)
+                #return True
                 
         else:
             print('Error sintáctico: Se esperaba un token coma o punto y se recibió ' + listaTokens[indiceToken]['tipo'] , listaTokens[indiceToken]['linea'], listaTokens[indiceToken]['columna'] )
