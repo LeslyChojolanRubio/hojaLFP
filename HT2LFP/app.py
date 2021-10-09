@@ -22,8 +22,11 @@
 #con que una producción sea recursivapor la izquierda, la gramática ya es recursiva por izquierda
 #analizador lexico simulado    imagina que cada letra es una palabra. Como lo de ordenar sintacticamente un if.
 listaTokens = []   # m,,,x
-listaTokens.append({'lexema': 'x', 'tipo': 'tk_x', 'linea': 1, 'columna': 1})
-
+listaTokens.append({'lexema': 'm', 'tipo': 'tk_m', 'linea': 1, 'columna': 1})
+listaTokens.append({'lexema': ',', 'tipo': 'tk_coma', 'linea': 1, 'columna': 2})
+listaTokens.append({'lexema': ',', 'tipo': 'tk_coma', 'linea': 1, 'columna': 22})
+listaTokens.append({'lexema': ',', 'tipo': 'tk_coma', 'linea': 1, 'columna': 3})
+listaTokens.append({'lexema': 'x', 'tipo': 'tk_x', 'linea': 1, 'columna': 5})
 
 #no estoy viendo si una cadena es valida o no eso es un hecho estoy viendo si la lista de tokens está en el orden correcto sintacticamente
 #m,b.x,,,x..b
